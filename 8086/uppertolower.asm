@@ -13,7 +13,7 @@ START:
     LEA DX,STRING2
     MOV AH,0AH
     INT 21H
-    LEA SI,STRING2
+    LEA SI,STRING2+2
     MOV CX,05H
 LOOP:
     MOV AX,[SI]
@@ -24,9 +24,9 @@ LOOP:
     INC SI
     DEC CX
     JNZ LOOP
-    JMP EXIT
+    MOV [SI],'$'
 EXIT:  
-    LEA DX,STRING2
+    LEA DX,STRING2+2
     MOV AH,09H
     INT 21H
     MOV AH,4CH
